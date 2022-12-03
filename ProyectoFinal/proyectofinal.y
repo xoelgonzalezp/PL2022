@@ -5,19 +5,14 @@
 
 int yylex(void);
 void yyerror (char const *message);
-
+void cabecera(int cabecera, char* nombre);
 %}
 
 %union{
 	char* string;
 }
 
-%token <string> H1
-%token <string> H2
-%token <string> H3
-%token <string> H4
-%token <string> H5
-%token <string> H6
+%token <string> H
 %token <string> CURSIVA
 %token <string> ENFASIS
 %token <string> SCRATCH
@@ -31,44 +26,18 @@ void yyerror (char const *message);
 
 %%
 
-S: titulo
-;
-
-titulo: H1 
-    {printf("<h1>%s</h1>\n", $1+2);}
-  | H2 
-    {printf("<h2>%s</h2>\n", $1+3);}
-  |H3 
-    {printf("<h3>%s</h3>\n", $1+4);}
-  |H4 
-    {printf("<h4> %s </h4>\n", $1+5);}
-  |H5 
-    {printf("<h5>%s</h5>\n", $1+6);}
-  |H6 
-    {printf("<h6>%s</h6>\n", $1+7);}  
-	| H1 titulo
-    	{printf("<h1>%s</h1>\n", $1+2);}  
-	| H2 titulo
-    	{printf("<h2>%s</h2>\n", $1+3);}  
-	| H3 titulo
-    	{printf("<h3>%s</h3>\n", $1+4);}  
-	| H4 titulo
-    	{printf("<h4>%s</h4>\n", $1+5);}  
-	| H5 titulo
-    	{printf("<h5>%s</h5>\n", $1+6);}  
-	| H6 titulo
-    	{printf("<h6>%s</h6>\n", $1+7);}
-	| H1 nombre
-	| H2 nombre
-	| H3 nombre
-	| H4 nombre
-	| H5 nombre
-	| H6 nombre
+S: /*vacio*/
+	| H NOMBRE {cabecera(strlen($1), $2);}
+	| H NOMBRE titulo {cabecera(strlen($1), $2);}
+	| H  NOMBRE nombre {cabecera(strlen($1), $2);}
+	| NOMBRE H NOMBRE titulo {cabecera(strlen($2), $3);}
+	| NOMBRE H NOMBRE nombre {cabecera(strlen($2), $3);}
 ;;
 
-nombre: NOMBRE {printf("<p>%s</p>\n", $1);}
-	| NOMBRE titulo {printf("<p>%s</p>\n", $1);}
-;
+titulo: H TITULO {cabecera(strlen($1), $2);}
+	| H TITULO titulo {cabecera(strlen($1), $2);}
+;;
+
 
 %%
 
@@ -91,3 +60,28 @@ int main(int argc, char *argv[]) {
 	}
 	return 0;
 }
+
+void cabecera(int cabecera, char* nombre){
+	switch(cabecera){
+		case 2:
+			 printf("<h1>%s</h1>\n", nombre); 
+			break;
+		case 3:
+			printf("<h2>%s</h2>\n", nombre);
+			break;
+		case 4: 
+			printf("<h3>%s</h3>\n", nombre);
+			break;
+		case 5:
+			printf("<h4>%s</h4>\n", nombre);
+			break;
+		case 6:
+			printf("<h5>%s</h5>\n", nombre);
+			break;
+		case 7: 
+			printf("<h6>%s</h6>\n", nombre);
+			break;
+		default: printf("Error");
+	}
+}
+
