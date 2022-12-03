@@ -1,0 +1,25 @@
+Autora: Nuria Iglesias Traviesa 
+
+Desarrollo
+
+En esta segunda práctica, he creado un parser XML (sin incluir ficheros DTD, Schema, y sin atributos en las etiquetas XML), el cual en el momento de encontrar un error terminará el análisis. 
+Si el archivo cumple con el formato, saldrá por pantalla que la sintaxis es correcta, en caso de lo contrario, saldrá una breve explicación del error. 
+Los errores que se han tenido en cuenta a la hora de hacer la práctica han sido: falta una etiqueta, mala sintaxis de las etiquetas, falta la línea de cabecera (declaración) y falta la etiqueta raíz
+
+
+Funcionamiento
+
+El funcionamiento de esta práctica se basa en dos ficheros, practica2.l y practica1.y. 
+En el primer fichero, en la sección de declaraciones he definido por separado el contenido de las distintas etiquetas y su nombre.
+Las reglas definidas para comentarios, los espacios en blanco, los tabuladores y los saltos de línea no tomarán ninguna acción.
+Mientras, se pasará la línea de cabecera, etiqueta abierta y cerrada con el nombre y el contenido con yyval, la cual comparte información entre léxico y sintáctico.
+En el siguiente fichero, practica.y, se han definido los tokens y las reglas que definirán si la sintaxis XML es correcta o los errores nombrados que darán lugar a la salida del programa.
+Se definió el axioma S, el cual comprobará que los ficheros de entrada tengan la cabecera. 
+A través de esa regla llegaremos a la regla etiquetas, que comprueba que las etiquetas estén bien formadas (en caso de que no tenga la etiqueta raíz, devolverá un error).
+Después llegamos a contenido, que es el interior de etiquetas, puede ser o datos o más etiquetas, que estén bien formadas pero también añadiendo que puedan estar seguidas de más contenido. 
+Lo he dividido así para poder comprobar si tiene la etiqueta raíz.
+Por último, tengo la regla datos, que puede ser etiqueta vacia o el token CONTENIDO.
+
+Peculiaridades
+
+A la hora de devolver la línea en la que sucede el error, el valor devuelto es un valor aproximado, debido a que no ha sido posible devolver el valor exacto por cómo estaban pensadas las reglas. 
