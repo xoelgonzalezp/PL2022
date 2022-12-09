@@ -1,7 +1,11 @@
-# h1 Heading
+# Heading
 
 
+ 
+ **_hola_**
+ 
+__*hola*__
 
-
-+ hola
+~~_as_~~
+ 
 

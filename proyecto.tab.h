@@ -61,14 +61,16 @@ extern int yydebug;
     H5 = 262,                      /* H5  */
     H6 = 263,                      /* H6  */
     CURSIVA = 264,                 /* CURSIVA  */
-    EMPHASIS = 265,                /* EMPHASIS  */
-    SCRATCH = 266,                 /* SCRATCH  */
-    CODE = 267,                    /* CODE  */
-    LISTAORD = 268,                /* LISTAORD  */
-    LISTADESORD = 269,             /* LISTADESORD  */
-    LINK = 270,                    /* LINK  */
-    TEXTWORD = 271,                /* TEXTWORD  */
-    TITLE = 272                    /* TITLE  */
+    COMB = 265,                    /* COMB  */
+    COMB2 = 266,                   /* COMB2  */
+    EMPHASIS = 267,                /* EMPHASIS  */
+    SCRATCH = 268,                 /* SCRATCH  */
+    CODE = 269,                    /* CODE  */
+    LISTAORD = 270,                /* LISTAORD  */
+    LISTADESORD = 271,             /* LISTADESORD  */
+    LINK = 272,                    /* LINK  */
+    TEXTWORD = 273,                /* TEXTWORD  */
+    TITLE = 274                    /* TITLE  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -84,14 +86,16 @@ extern int yydebug;
 #define H5 262
 #define H6 263
 #define CURSIVA 264
-#define EMPHASIS 265
-#define SCRATCH 266
-#define CODE 267
-#define LISTAORD 268
-#define LISTADESORD 269
-#define LINK 270
-#define TEXTWORD 271
-#define TITLE 272
+#define COMB 265
+#define COMB2 266
+#define EMPHASIS 267
+#define SCRATCH 268
+#define CODE 269
+#define LISTAORD 270
+#define LISTADESORD 271
+#define LINK 272
+#define TEXTWORD 273
+#define TITLE 274
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -103,7 +107,7 @@ union YYSTYPE
      char* string;
 
 
-#line 107 "proyecto.tab.h"
+#line 111 "proyecto.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

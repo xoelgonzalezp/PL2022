@@ -2,7 +2,6 @@
 
 #include <stdlib.h>
 #include "proyecto.tab.h"
-int counter=0;
 %}
 
 ws [ \t]+
@@ -23,10 +22,12 @@ code              ["\`\`"{textword} "\`\`"]+
 ("#### "{title})+   {  yylval.string = strdup(yytext); return H4; }
 ("##### "{title})+   {  yylval.string = strdup(yytext); return H5 ;}
 ("###### "{title})+ {  yylval.string = strdup(yytext); return H6;}
-({digit}". "{textword})+ {counter++;yylval.string=strdup(yytext); return LISTAORD;}
-("\-"|"\+"{textword})+ {counter++;yylval.string=strdup(yytext); return LISTADESORD;}
+({digit}". "{textword})+ {yylval.string=strdup(yytext); return LISTAORD;}
+("\-"|"\+"{textword})+ {yylval.string=strdup(yytext); return LISTADESORD;}
 {textword}           { yylval.string = strdup(yytext); return TEXTWORD;}
 ("*"{textword}"*"|"_"{textword}"_")+            { yylval.string = strdup(yytext); return CURSIVA;}
+("**_"{textword}"_**"|"__*"{textword}"*__")+            { yylval.string = strdup(yytext); return COMB;}
+("~~_"{textword}"_~~")+            { yylval.string = strdup(yytext); return COMB2;}
 ("**"{textword}"**"|"__"{textword}"__")+         {yylval.string = strdup(yytext); return EMPHASIS;}
 ("~~"{textword}"~~")+                    {yylval.string = strdup(yytext); return SCRATCH;}
 {code}                      {yylval.string=strdup(yytext); return CODE;}

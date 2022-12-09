@@ -25,6 +25,8 @@ char *rmposition (char *s);
 %token <string> H5
 %token <string> H6
 %token <string> CURSIVA
+%token <string> COMB
+%token <string> COMB2
 %token <string> EMPHASIS
 %token <string> SCRATCH
 %token <string> CODE
@@ -127,6 +129,30 @@ title: H1
 	{printf("<h5>%s</h5>\n", $1+6);} 
 	| H6 listas
 	{printf("<h6>%s</h6>\n", $1+7);} 
+	| H1 comb
+	{printf("<h1>%s</h1>\n", $1+2);} 
+	| H2 comb
+	{printf("<h2>%s</h2>\n", $1+3);} 
+	| H3 comb
+	{printf("<h3>%s</h3>\n", $1+4);} 
+	| H4 comb
+	{printf("<h4>%s</h4>\n", $1+5);} 
+	| H5 comb
+	{printf("<h5>%s</h5>\n", $1+6);} 
+	| H6 comb
+	{printf("<h6>%s</h6>\n", $1+7);} 
+	| H1 comb2
+	{printf("<h1>%s</h1>\n", $1+2);} 
+	| H2 comb2
+	{printf("<h2>%s</h2>\n", $1+3);} 
+	| H3 comb2
+	{printf("<h3>%s</h3>\n", $1+4);} 
+	| H4 comb2
+	{printf("<h4>%s</h4>\n", $1+5);} 
+	| H5 comb2
+	{printf("<h5>%s</h5>\n", $1+6);} 
+	| H6 comb2
+	{printf("<h6>%s</h6>\n", $1+7);} 
 	
 ;;
 
@@ -135,7 +161,15 @@ title: H1
 
 
 textword:TEXTWORD {printf("<p>%s</p>\n", $1); }
-        | TEXTWORD S {printf("<p>%s</p>\n",$1);}              
+        |TEXTWORD title {printf("<p>%s</p>\n",$1);}      
+        |TEXTWORD cursiva
+        |TEXTWORD listas
+        |TEXTWORD scratch
+        |TEXTWORD comb
+        |TEXTWORD comb2
+        |TEXTWORD emphasis
+        
+            
 ;
 
 
@@ -172,6 +206,14 @@ emphasis: EMPHASIS
           {rmposition($1);
           printf("<b>%s</b>\n", $1); }
           
+          |EMPHASIS comb
+          {rmposition($1);
+          printf("<b>%s</b>\n", $1); }
+          
+          |EMPHASIS comb2
+          {rmposition($1);
+          printf("<b>%s</b>\n", $1); }
+               
 ;          
      
 cursiva: CURSIVA  {rmposition($1);
@@ -191,8 +233,77 @@ cursiva: CURSIVA  {rmposition($1);
          printf("<em>%s</em>\n", $1); }
          | CURSIVA textword   
          {rmposition($1);
-         printf("<em>%s</em>\n", $1); }     
+         printf("<em>%s</em>\n", $1); } 
+         
+         |CURSIVA comb
+         {rmposition($1);
+         printf("<em>%s</em>\n", $1); }
+         
+         |CURSIVA comb2
+         {rmposition($1);
+         printf("<em>%s</em>\n", $1); }
+             
 ;
+
+
+
+comb:    COMB  {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); }
+        
+         | COMB title
+         {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); }
+         | COMB emphasis
+         {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); }
+         | COMB cursiva
+         {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); }
+         | COMB scratch
+         {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); }
+         | COMB textword   
+         {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); }   
+         | COMB comb2  
+         {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); }    
+         | COMB comb
+         {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); }  
+;
+
+comb2:    COMB2  {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); }
+        
+         | COMB2 title
+         {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); }
+         | COMB2 emphasis
+         {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); }
+         | COMB2 cursiva
+         {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); }
+         | COMB2 scratch
+         {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); }
+         | COMB2 textword   
+         {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); }   
+         | COMB2 comb   
+         {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); }  
+         
+         | COMB2 comb2  
+         {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); }  
+;
+
+
+
+
+
 
 scratch: SCRATCH {rmposition($1);
 
@@ -213,6 +324,13 @@ scratch: SCRATCH {rmposition($1);
          |SCRATCH textword    
          {rmposition($1);
          printf("<del>%s</del>\n", $1); }  
+         |SCRATCH comb
+         {rmposition($1);
+         printf("<del>%s</del>\n", $1); }
+         |SCRATCH comb2
+         {rmposition($1);
+         printf("<del>%s</del>\n", $1); }
+             
 ;
 
 
