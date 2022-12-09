@@ -184,20 +184,37 @@ scratch: SCRATCH
 			printf("<del>%s</del>\n", $1);}      
 ;
 
+
+
+
 listas: LISTAORD 
-	{printf("<ol>%s</ol>\n", $1+3);}
+	{printf("<li>%s</li>\n", $1+3);}
 	| LISTAORD listas
-	{printf("<ol>%s</ol>\n", $1+3);}
+	{printf("<li>%s</li>\n", $1+3);}
 	| LISTAORD titulo
-	{printf("<ol>%s</ol>\n", $1+3);}
+	{printf("<li>%s</li>\n", $1+3);}
 	| LISTAORD scratch
-	{printf("<ol>%s</ol>\n", $1+3);}
+	{printf("<li>%s</li>\n", $1+3);}
 	| LISTAORD cursiva
-	{printf("<ol>%s</ol>\n", $1+3);}
+	{printf("<li>%s</li>\n", $1+3);}
 	| LISTAORD enfasis
-	{printf("<ol>%s</ol>\n", $1+3);}
+	{printf("<li>%s</li>\n", $1+3);}
 	| LISTAORD nombre
-	{printf("<ol>%s</ol>\n", $1+3);}
+	{printf("<li>%s</li>\n", $1+3);}
+	| LISTADESORD 
+	{printf("<li>%s</li>\n", $1+2);}
+	| LISTADESORD listas
+	{printf("<li>%s</li>\n", $1+2);}
+	| LISTADESORD titulo
+	{printf("<li>%s</li>\n", $1+2);}
+	| LISTADESORD scratch
+	{printf("<li>%s</li>\n", $1+2);}
+	| LISTADESORD cursiva
+	{printf("<li>%s</li>\n", $1+2);}
+	| LISTADESORD enfasis
+	{printf("<li>%s</li>\n", $1+2);}
+	| LISTADESORD nombre
+	{printf("<li>%s</li>\n", $1+2);} 
 ;
 
 %%

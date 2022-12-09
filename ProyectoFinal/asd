@@ -1,18 +1,3 @@
-S: H titulo
-;
-
-titulo: TITULO { if(counterTitle==1){printf("<h1>%s</h1>\n", $1);}
-			if(counterTitle==2){printf("<h2>%s</h2>\n", $1);}
-			if(counterTitle==3){printf("<h1>%s</h1>\n", $1);}
-			if(counterTitle==4){printf("<h1>%s</h1>\n", $1);}
-			if(counterTitle==5){printf("<h1>%s</h1>\n", $1);}
-			if(counterTitle==6){printf("<h1>%s</h1>\n", $1);}
-			}
-	| TITULO S { if(counterTitle==1){printf("<h1>%s</h1>\n", $1);}
-			if(counterTitle==2){printf("<h1>%s</h1>\n", $1);}
-			if(counterTitle==3){printf("<h1>%s</h1>\n", $1);}
-			if(counterTitle==4){printf("<h1>%s</h1>\n", $1);}
-			if(counterTitle==5){printf("<h1>%s</h1>\n", $1);}
-			if(counterTitle==6){printf("<h1>%s</h1>\n", $1);}
-			}
-; 
+1. si definimos las listas ordenadas, nos coge el ol y el li (no sabemos cerrar el ol), para que funcione tenemos que quitar el salto de linea del nombre, 
+ya que sino entra por ahí y no por la lista ordenada
+2. no sabemos como detectar el final de la lista
