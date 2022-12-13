@@ -463,16 +463,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  65
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   181
+#define YYLAST   171
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  20
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  10
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  118
+#define YYNRULES  124
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  120
+#define YYNSTATES  126
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   274
@@ -531,10 +531,11 @@ static const yytype_int16 yyrline[] =
      142,   144,   146,   148,   150,   152,   154,   163,   164,   165,
      166,   167,   168,   169,   170,   176,   183,   189,   194,   199,
      204,   209,   213,   219,   222,   225,   228,   231,   234,   238,
-     242,   250,   253,   256,   259,   262,   265,   268,   271,   276,
-     279,   282,   285,   288,   291,   294,   298,   308,   312,   315,
-     318,   321,   324,   327,   330,   346,   348,   350,   352,   354,
-     356,   358,   360,   362,   364,   366,   368,   370,   372
+     242,   250,   253,   256,   259,   262,   265,   268,   271,   275,
+     280,   283,   286,   289,   292,   295,   298,   302,   306,   317,
+     321,   324,   327,   330,   333,   336,   339,   355,   357,   359,
+     361,   363,   365,   367,   369,   371,   373,   375,   377,   379,
+     381,   383,   385,   387,   389
 };
 #endif
 
@@ -578,8 +579,8 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-     141,    -3,    -3,    -3,    -3,    -3,    -3,    11,    -4,    29,
-      29,    29,    29,    29,    45,    45,   151,    -4,    -4,    -4,
+     163,    -3,    -3,    -3,    -3,    -3,    -3,    11,    -4,    29,
+      -3,    -3,    29,    29,    -3,    -3,   135,    -4,    -4,    -4,
       -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
       -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
       -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
@@ -589,7 +590,8 @@ static const yytype_int16 yypact[] =
       -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
       -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
       -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
-      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -598,23 +600,24 @@ static const yytype_int16 yypact[] =
 static const yytype_int8 yydefact[] =
 {
        0,     3,     4,     5,     6,     7,     8,     0,     2,    73,
-      81,    89,    65,    97,   105,   112,    57,     9,    15,    21,
+      81,    90,    65,    99,   107,   116,    57,     9,    15,    21,
       27,    45,    51,    33,    39,    10,    16,    22,    28,    46,
       52,    34,    40,    11,    17,    23,    29,    47,    53,    35,
       41,    12,    18,    24,    30,    48,    54,    36,    42,    13,
       19,    25,    31,    49,    55,    37,    43,    14,    20,    26,
       32,    50,    56,    38,    44,     1,    74,    78,    75,    76,
       79,    80,    77,    82,    86,    83,    84,    88,    87,    85,
-      90,    94,    91,    92,    95,    96,    93,    66,    70,    67,
-      68,    71,    72,    69,    98,   102,   101,   100,   103,   104,
-      99,   107,   111,   110,   109,   108,   106,   114,   118,   117,
-     116,   115,   113,    58,    64,    59,    62,    63,    61,    60
+      89,    91,    95,    92,    93,    96,    97,    94,    98,    66,
+      70,    67,    68,    71,    72,    69,   100,   104,   103,   102,
+     105,   106,   101,   109,   113,   112,   111,   114,   115,   110,
+     108,   118,   122,   121,   120,   123,   124,   119,   117,    58,
+      64,    59,    62,    63,    61,    60
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-      -4,    -4,    15,   166,    62,    77,   107,   122,    92,   137
+      -4,    -4,    15,   150,    46,    61,    76,    91,   106,   121
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -630,23 +633,22 @@ static const yytype_int8 yytable[] =
 {
        1,     2,     3,     4,     5,     6,     9,    10,    11,    12,
       13,    65,    14,    15,     0,    16,    17,    25,    33,    41,
-      49,    57,     0,     0,    66,    73,    80,    87,    94,   101,
-     107,   113,     1,     2,     3,     4,     5,     6,     9,    10,
-      11,    12,    13,     0,     0,     0,     0,    16,     1,     2,
-       3,     4,     5,     6,     9,     0,     0,    12,    13,     0,
-      14,    15,     0,    16,    27,    35,    43,    51,    59,     0,
-       0,    68,    75,    82,    89,    96,   103,   109,   114,    28,
-      36,    44,    52,    60,     0,     0,    69,    76,    83,    90,
-      97,   104,   110,   115,    31,    39,    47,    55,    63,     0,
-       0,    72,    79,    86,    93,   100,   105,   111,   118,    29,
-      37,    45,    53,    61,     0,     0,    70,    77,    84,    91,
-      98,     0,     0,   116,    30,    38,    46,    54,    62,     0,
-       0,    71,    78,    85,    92,    99,     0,     0,   117,    32,
-      40,    48,    56,    64,     1,     2,     3,     4,     5,     6,
-       0,   106,   112,   119,     1,     2,     3,     4,     5,     6,
-       9,    10,    11,    12,    13,     0,    14,    15,    26,    34,
-      42,    50,    58,     0,     0,    67,    74,    81,    88,    95,
-     102,   108
+      49,    57,     0,     0,    66,    73,    81,    89,    96,   103,
+     111,   119,     1,     2,     3,     4,     5,     6,     9,    10,
+      11,    12,    13,     0,     0,     0,     0,    16,    27,    35,
+      43,    51,    59,     0,     0,    68,    75,    83,    91,    98,
+     105,   113,   120,    28,    36,    44,    52,    60,     0,     0,
+      69,    76,    84,    92,    99,   106,   114,   121,    29,    37,
+      45,    53,    61,     0,     0,    70,    77,    85,    93,   100,
+     107,   115,   122,    30,    38,    46,    54,    62,     0,     0,
+      71,    78,    86,    94,   101,   108,   116,   123,    31,    39,
+      47,    55,    63,     0,     0,    72,    79,    87,    95,   102,
+     109,   117,   124,    32,    40,    48,    56,    64,     0,     0,
+       0,    80,    88,     0,     0,   110,   118,   125,     1,     2,
+       3,     4,     5,     6,     9,    10,    11,    12,    13,     0,
+      14,    15,    26,    34,    42,    50,    58,     0,     0,    67,
+      74,    82,    90,    97,   104,   112,     1,     2,     3,     4,
+       5,     6
 };
 
 static const yytype_int8 yycheck[] =
@@ -655,21 +657,20 @@ static const yytype_int8 yycheck[] =
       13,     0,    15,    16,    -1,    18,     1,     2,     3,     4,
        5,     6,    -1,    -1,     9,    10,    11,    12,    13,    14,
       15,    16,     3,     4,     5,     6,     7,     8,     9,    10,
-      11,    12,    13,    -1,    -1,    -1,    -1,    18,     3,     4,
-       5,     6,     7,     8,     9,    -1,    -1,    12,    13,    -1,
-      15,    16,    -1,    18,     2,     3,     4,     5,     6,    -1,
-      -1,     9,    10,    11,    12,    13,    14,    15,    16,     2,
-       3,     4,     5,     6,    -1,    -1,     9,    10,    11,    12,
-      13,    14,    15,    16,     2,     3,     4,     5,     6,    -1,
-      -1,     9,    10,    11,    12,    13,    14,    15,    16,     2,
-       3,     4,     5,     6,    -1,    -1,     9,    10,    11,    12,
-      13,    -1,    -1,    16,     2,     3,     4,     5,     6,    -1,
-      -1,     9,    10,    11,    12,    13,    -1,    -1,    16,     2,
-       3,     4,     5,     6,     3,     4,     5,     6,     7,     8,
-      -1,    14,    15,    16,     3,     4,     5,     6,     7,     8,
-       9,    10,    11,    12,    13,    -1,    15,    16,     2,     3,
+      11,    12,    13,    -1,    -1,    -1,    -1,    18,     2,     3,
        4,     5,     6,    -1,    -1,     9,    10,    11,    12,    13,
-      14,    15
+      14,    15,    16,     2,     3,     4,     5,     6,    -1,    -1,
+       9,    10,    11,    12,    13,    14,    15,    16,     2,     3,
+       4,     5,     6,    -1,    -1,     9,    10,    11,    12,    13,
+      14,    15,    16,     2,     3,     4,     5,     6,    -1,    -1,
+       9,    10,    11,    12,    13,    14,    15,    16,     2,     3,
+       4,     5,     6,    -1,    -1,     9,    10,    11,    12,    13,
+      14,    15,    16,     2,     3,     4,     5,     6,    -1,    -1,
+      -1,    10,    11,    -1,    -1,    14,    15,    16,     3,     4,
+       5,     6,     7,     8,     9,    10,    11,    12,    13,    -1,
+      15,    16,     2,     3,     4,     5,     6,    -1,    -1,     9,
+      10,    11,    12,    13,    14,    15,     3,     4,     5,     6,
+       7,     8
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
@@ -684,10 +685,11 @@ static const yytype_int8 yystos[] =
       23,    24,    25,    26,    27,    28,    29,    22,    23,    24,
       25,    26,    27,    28,    29,     0,    22,    23,    24,    25,
       26,    27,    28,    22,    23,    24,    25,    26,    27,    28,
-      22,    23,    24,    25,    26,    27,    28,    22,    23,    24,
-      25,    26,    27,    28,    22,    23,    24,    25,    26,    27,
-      28,    22,    23,    24,    25,    28,    29,    22,    23,    24,
-      25,    28,    29,    22,    24,    25,    26,    27,    28,    29
+      29,    22,    23,    24,    25,    26,    27,    28,    29,    22,
+      23,    24,    25,    26,    27,    28,    22,    23,    24,    25,
+      26,    27,    28,    22,    23,    24,    25,    26,    27,    28,
+      29,    22,    23,    24,    25,    26,    27,    28,    29,    22,
+      24,    25,    26,    27,    28,    29
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
@@ -701,10 +703,11 @@ static const yytype_int8 yyr1[] =
       22,    22,    22,    22,    22,    22,    22,    23,    23,    23,
       23,    23,    23,    23,    23,    24,    24,    24,    24,    24,
       24,    24,    24,    25,    25,    25,    25,    25,    25,    25,
-      25,    26,    26,    26,    26,    26,    26,    26,    26,    27,
-      27,    27,    27,    27,    27,    27,    27,    28,    28,    28,
-      28,    28,    28,    28,    28,    29,    29,    29,    29,    29,
-      29,    29,    29,    29,    29,    29,    29,    29,    29
+      25,    26,    26,    26,    26,    26,    26,    26,    26,    26,
+      27,    27,    27,    27,    27,    27,    27,    27,    27,    28,
+      28,    28,    28,    28,    28,    28,    28,    29,    29,    29,
+      29,    29,    29,    29,    29,    29,    29,    29,    29,    29,
+      29,    29,    29,    29,    29
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -718,10 +721,11 @@ static const yytype_int8 yyr2[] =
        2,     2,     2,     2,     2,     2,     2,     1,     2,     2,
        2,     2,     2,     2,     2,     1,     2,     2,     2,     2,
        2,     2,     2,     1,     2,     2,     2,     2,     2,     2,
-       2,     1,     2,     2,     2,     2,     2,     2,     2,     1,
+       2,     1,     2,     2,     2,     2,     2,     2,     2,     2,
+       1,     2,     2,     2,     2,     2,     2,     2,     2,     1,
        2,     2,     2,     2,     2,     2,     2,     1,     2,     2,
-       2,     2,     2,     2,     2,     1,     2,     2,     2,     2,
-       2,     2,     1,     2,     2,     2,     2,     2,     2
+       2,     2,     2,     2,     2,     2,     1,     2,     2,     2,
+       2,     2,     2,     2,     2
 };
 
 
@@ -1187,337 +1191,337 @@ yyreduce:
   case 3: /* title: H1  */
 #line 49 "proyecto.y"
    {printf("<h1>%s</h1>\n", (yyvsp[0].string)+2);}
-#line 1191 "proyecto.tab.c"
+#line 1195 "proyecto.tab.c"
     break;
 
   case 4: /* title: H2  */
 #line 51 "proyecto.y"
     {printf("<h2>%s</h2>\n", (yyvsp[0].string)+3);}
-#line 1197 "proyecto.tab.c"
+#line 1201 "proyecto.tab.c"
     break;
 
   case 5: /* title: H3  */
 #line 53 "proyecto.y"
     {printf("<h3>%s</h3>\n", (yyvsp[0].string)+4);}
-#line 1203 "proyecto.tab.c"
+#line 1207 "proyecto.tab.c"
     break;
 
   case 6: /* title: H4  */
 #line 55 "proyecto.y"
     {printf("<h4> %s </h4>\n", (yyvsp[0].string)+5);}
-#line 1209 "proyecto.tab.c"
+#line 1213 "proyecto.tab.c"
     break;
 
   case 7: /* title: H5  */
 #line 57 "proyecto.y"
     {printf("<h5>%s</h5>\n", (yyvsp[0].string)+6);}
-#line 1215 "proyecto.tab.c"
+#line 1219 "proyecto.tab.c"
     break;
 
   case 8: /* title: H6  */
 #line 59 "proyecto.y"
     {printf("<h6>%s</h6>\n", (yyvsp[0].string)+7);}
-#line 1221 "proyecto.tab.c"
+#line 1225 "proyecto.tab.c"
     break;
 
   case 9: /* title: H1 title  */
 #line 61 "proyecto.y"
         {printf("<h1>%s</h1>\n", (yyvsp[-1].string)+2);}
-#line 1227 "proyecto.tab.c"
+#line 1231 "proyecto.tab.c"
     break;
 
   case 10: /* title: H2 title  */
 #line 63 "proyecto.y"
         {printf("<h2>%s</h2>\n", (yyvsp[-1].string)+3);}
-#line 1233 "proyecto.tab.c"
+#line 1237 "proyecto.tab.c"
     break;
 
   case 11: /* title: H3 title  */
 #line 65 "proyecto.y"
         {printf("<h3>%s</h3>\n", (yyvsp[-1].string)+4);}
-#line 1239 "proyecto.tab.c"
+#line 1243 "proyecto.tab.c"
     break;
 
   case 12: /* title: H4 title  */
 #line 67 "proyecto.y"
         {printf("<h4>%s</h4>\n", (yyvsp[-1].string)+5);}
-#line 1245 "proyecto.tab.c"
+#line 1249 "proyecto.tab.c"
     break;
 
   case 13: /* title: H5 title  */
 #line 69 "proyecto.y"
         {printf("<h5>%s</h5>\n", (yyvsp[-1].string)+6);}
-#line 1251 "proyecto.tab.c"
+#line 1255 "proyecto.tab.c"
     break;
 
   case 14: /* title: H6 title  */
 #line 71 "proyecto.y"
         {printf("<h6>%s</h6>\n", (yyvsp[-1].string)+7);}
-#line 1257 "proyecto.tab.c"
+#line 1261 "proyecto.tab.c"
     break;
 
   case 15: /* title: H1 textword  */
 #line 73 "proyecto.y"
         {printf("<h1>%s</h1>\n", (yyvsp[-1].string)+2);}
-#line 1263 "proyecto.tab.c"
+#line 1267 "proyecto.tab.c"
     break;
 
   case 16: /* title: H2 textword  */
 #line 75 "proyecto.y"
         {printf("<h2>%s</h2>\n", (yyvsp[-1].string)+2);}
-#line 1269 "proyecto.tab.c"
+#line 1273 "proyecto.tab.c"
     break;
 
   case 17: /* title: H3 textword  */
 #line 77 "proyecto.y"
         {printf("<h3>%s</h3>\n", (yyvsp[-1].string)+2);}
-#line 1275 "proyecto.tab.c"
+#line 1279 "proyecto.tab.c"
     break;
 
   case 18: /* title: H4 textword  */
 #line 79 "proyecto.y"
         {printf("<h4>%s</h4>\n", (yyvsp[-1].string)+2);}
-#line 1281 "proyecto.tab.c"
+#line 1285 "proyecto.tab.c"
     break;
 
   case 19: /* title: H5 textword  */
 #line 81 "proyecto.y"
         {printf("<h5>%s</h5>\n", (yyvsp[-1].string)+2);}
-#line 1287 "proyecto.tab.c"
+#line 1291 "proyecto.tab.c"
     break;
 
   case 20: /* title: H6 textword  */
 #line 83 "proyecto.y"
         {printf("<h6>%s</h6>\n", (yyvsp[-1].string)+2);}
-#line 1293 "proyecto.tab.c"
+#line 1297 "proyecto.tab.c"
     break;
 
   case 21: /* title: H1 emphasis  */
 #line 85 "proyecto.y"
         {printf("<h1>%s</h1>\n", (yyvsp[-1].string)+2);}
-#line 1299 "proyecto.tab.c"
+#line 1303 "proyecto.tab.c"
     break;
 
   case 22: /* title: H2 emphasis  */
 #line 87 "proyecto.y"
         {printf("<h2>%s</h2>\n", (yyvsp[-1].string)+3);}
-#line 1305 "proyecto.tab.c"
+#line 1309 "proyecto.tab.c"
     break;
 
   case 23: /* title: H3 emphasis  */
 #line 89 "proyecto.y"
         {printf("<h3>%s</h3>\n", (yyvsp[-1].string)+4);}
-#line 1311 "proyecto.tab.c"
+#line 1315 "proyecto.tab.c"
     break;
 
   case 24: /* title: H4 emphasis  */
 #line 91 "proyecto.y"
         {printf("<h4>%s</h4>\n", (yyvsp[-1].string)+5);}
-#line 1317 "proyecto.tab.c"
+#line 1321 "proyecto.tab.c"
     break;
 
   case 25: /* title: H5 emphasis  */
 #line 93 "proyecto.y"
         {printf("<h5>%s</h5>\n", (yyvsp[-1].string)+6);}
-#line 1323 "proyecto.tab.c"
+#line 1327 "proyecto.tab.c"
     break;
 
   case 26: /* title: H6 emphasis  */
 #line 95 "proyecto.y"
         {printf("<h6>%s</h6>\n", (yyvsp[-1].string)+7);}
-#line 1329 "proyecto.tab.c"
+#line 1333 "proyecto.tab.c"
     break;
 
   case 27: /* title: H1 cursiva  */
 #line 97 "proyecto.y"
         {printf("<h1>%s</h1>\n", (yyvsp[-1].string)+2);}
-#line 1335 "proyecto.tab.c"
+#line 1339 "proyecto.tab.c"
     break;
 
   case 28: /* title: H2 cursiva  */
 #line 99 "proyecto.y"
         {printf("<h2>%s</h2>\n", (yyvsp[-1].string)+3);}
-#line 1341 "proyecto.tab.c"
+#line 1345 "proyecto.tab.c"
     break;
 
   case 29: /* title: H3 cursiva  */
 #line 101 "proyecto.y"
         {printf("<h3>%s</h3>\n", (yyvsp[-1].string)+4);}
-#line 1347 "proyecto.tab.c"
+#line 1351 "proyecto.tab.c"
     break;
 
   case 30: /* title: H4 cursiva  */
 #line 103 "proyecto.y"
         {printf("<h4>%s</h4>\n", (yyvsp[-1].string)+5);}
-#line 1353 "proyecto.tab.c"
+#line 1357 "proyecto.tab.c"
     break;
 
   case 31: /* title: H5 cursiva  */
 #line 105 "proyecto.y"
         {printf("<h5>%s</h5>\n", (yyvsp[-1].string)+6);}
-#line 1359 "proyecto.tab.c"
+#line 1363 "proyecto.tab.c"
     break;
 
   case 32: /* title: H6 cursiva  */
 #line 107 "proyecto.y"
         {printf("<h6>%s</h6>\n", (yyvsp[-1].string)+7);}
-#line 1365 "proyecto.tab.c"
+#line 1369 "proyecto.tab.c"
     break;
 
   case 33: /* title: H1 scratch  */
 #line 109 "proyecto.y"
         {printf("<h1>%s</h1>\n", (yyvsp[-1].string)+2);}
-#line 1371 "proyecto.tab.c"
+#line 1375 "proyecto.tab.c"
     break;
 
   case 34: /* title: H2 scratch  */
 #line 111 "proyecto.y"
         {printf("<h2>%s</h2>\n", (yyvsp[-1].string)+3);}
-#line 1377 "proyecto.tab.c"
+#line 1381 "proyecto.tab.c"
     break;
 
   case 35: /* title: H3 scratch  */
 #line 113 "proyecto.y"
         {printf("<h3>%s</h3>\n", (yyvsp[-1].string)+4);}
-#line 1383 "proyecto.tab.c"
+#line 1387 "proyecto.tab.c"
     break;
 
   case 36: /* title: H4 scratch  */
 #line 115 "proyecto.y"
         {printf("<h4>%s</h4>\n", (yyvsp[-1].string)+5);}
-#line 1389 "proyecto.tab.c"
+#line 1393 "proyecto.tab.c"
     break;
 
   case 37: /* title: H5 scratch  */
 #line 117 "proyecto.y"
         {printf("<h5>%s</h5>\n", (yyvsp[-1].string)+6);}
-#line 1395 "proyecto.tab.c"
+#line 1399 "proyecto.tab.c"
     break;
 
   case 38: /* title: H6 scratch  */
 #line 119 "proyecto.y"
         {printf("<h6>%s</h6>\n", (yyvsp[-1].string)+7);}
-#line 1401 "proyecto.tab.c"
+#line 1405 "proyecto.tab.c"
     break;
 
   case 39: /* title: H1 listas  */
 #line 121 "proyecto.y"
         {printf("<h1>%s</h1>\n", (yyvsp[-1].string)+2);}
-#line 1407 "proyecto.tab.c"
+#line 1411 "proyecto.tab.c"
     break;
 
   case 40: /* title: H2 listas  */
 #line 123 "proyecto.y"
         {printf("<h2>%s</h2>\n", (yyvsp[-1].string)+3);}
-#line 1413 "proyecto.tab.c"
+#line 1417 "proyecto.tab.c"
     break;
 
   case 41: /* title: H3 listas  */
 #line 125 "proyecto.y"
         {printf("<h3>%s</h3>\n", (yyvsp[-1].string)+4);}
-#line 1419 "proyecto.tab.c"
+#line 1423 "proyecto.tab.c"
     break;
 
   case 42: /* title: H4 listas  */
 #line 127 "proyecto.y"
         {printf("<h4>%s</h4>\n", (yyvsp[-1].string)+5);}
-#line 1425 "proyecto.tab.c"
+#line 1429 "proyecto.tab.c"
     break;
 
   case 43: /* title: H5 listas  */
 #line 129 "proyecto.y"
         {printf("<h5>%s</h5>\n", (yyvsp[-1].string)+6);}
-#line 1431 "proyecto.tab.c"
+#line 1435 "proyecto.tab.c"
     break;
 
   case 44: /* title: H6 listas  */
 #line 131 "proyecto.y"
         {printf("<h6>%s</h6>\n", (yyvsp[-1].string)+7);}
-#line 1437 "proyecto.tab.c"
+#line 1441 "proyecto.tab.c"
     break;
 
   case 45: /* title: H1 comb  */
 #line 133 "proyecto.y"
         {printf("<h1>%s</h1>\n", (yyvsp[-1].string)+2);}
-#line 1443 "proyecto.tab.c"
+#line 1447 "proyecto.tab.c"
     break;
 
   case 46: /* title: H2 comb  */
 #line 135 "proyecto.y"
         {printf("<h2>%s</h2>\n", (yyvsp[-1].string)+3);}
-#line 1449 "proyecto.tab.c"
+#line 1453 "proyecto.tab.c"
     break;
 
   case 47: /* title: H3 comb  */
 #line 137 "proyecto.y"
         {printf("<h3>%s</h3>\n", (yyvsp[-1].string)+4);}
-#line 1455 "proyecto.tab.c"
+#line 1459 "proyecto.tab.c"
     break;
 
   case 48: /* title: H4 comb  */
 #line 139 "proyecto.y"
         {printf("<h4>%s</h4>\n", (yyvsp[-1].string)+5);}
-#line 1461 "proyecto.tab.c"
+#line 1465 "proyecto.tab.c"
     break;
 
   case 49: /* title: H5 comb  */
 #line 141 "proyecto.y"
         {printf("<h5>%s</h5>\n", (yyvsp[-1].string)+6);}
-#line 1467 "proyecto.tab.c"
+#line 1471 "proyecto.tab.c"
     break;
 
   case 50: /* title: H6 comb  */
 #line 143 "proyecto.y"
         {printf("<h6>%s</h6>\n", (yyvsp[-1].string)+7);}
-#line 1473 "proyecto.tab.c"
+#line 1477 "proyecto.tab.c"
     break;
 
   case 51: /* title: H1 comb2  */
 #line 145 "proyecto.y"
         {printf("<h1>%s</h1>\n", (yyvsp[-1].string)+2);}
-#line 1479 "proyecto.tab.c"
+#line 1483 "proyecto.tab.c"
     break;
 
   case 52: /* title: H2 comb2  */
 #line 147 "proyecto.y"
         {printf("<h2>%s</h2>\n", (yyvsp[-1].string)+3);}
-#line 1485 "proyecto.tab.c"
+#line 1489 "proyecto.tab.c"
     break;
 
   case 53: /* title: H3 comb2  */
 #line 149 "proyecto.y"
         {printf("<h3>%s</h3>\n", (yyvsp[-1].string)+4);}
-#line 1491 "proyecto.tab.c"
+#line 1495 "proyecto.tab.c"
     break;
 
   case 54: /* title: H4 comb2  */
 #line 151 "proyecto.y"
         {printf("<h4>%s</h4>\n", (yyvsp[-1].string)+5);}
-#line 1497 "proyecto.tab.c"
+#line 1501 "proyecto.tab.c"
     break;
 
   case 55: /* title: H5 comb2  */
 #line 153 "proyecto.y"
         {printf("<h5>%s</h5>\n", (yyvsp[-1].string)+6);}
-#line 1503 "proyecto.tab.c"
+#line 1507 "proyecto.tab.c"
     break;
 
   case 56: /* title: H6 comb2  */
 #line 155 "proyecto.y"
         {printf("<h6>%s</h6>\n", (yyvsp[-1].string)+7);}
-#line 1509 "proyecto.tab.c"
+#line 1513 "proyecto.tab.c"
     break;
 
   case 57: /* textword: TEXTWORD  */
 #line 163 "proyecto.y"
                   {printf("<p>%s</p>\n", (yyvsp[0].string)); }
-#line 1515 "proyecto.tab.c"
+#line 1519 "proyecto.tab.c"
     break;
 
   case 58: /* textword: TEXTWORD title  */
 #line 164 "proyecto.y"
                         {printf("<p>%s</p>\n",(yyvsp[-1].string));}
-#line 1521 "proyecto.tab.c"
+#line 1525 "proyecto.tab.c"
     break;
 
   case 65: /* emphasis: EMPHASIS  */
@@ -1525,369 +1529,407 @@ yyreduce:
           { rmposition((yyvsp[0].string));
           
           printf("<b>%s</b>\n", (yyvsp[0].string));}
-#line 1529 "proyecto.tab.c"
+#line 1533 "proyecto.tab.c"
     break;
 
   case 66: /* emphasis: EMPHASIS title  */
 #line 185 "proyecto.y"
           {rmposition((yyvsp[-1].string));
           printf("<b>%s</b>\n", (yyvsp[-1].string)); }
-#line 1536 "proyecto.tab.c"
+#line 1540 "proyecto.tab.c"
     break;
 
   case 67: /* emphasis: EMPHASIS emphasis  */
 #line 191 "proyecto.y"
           {rmposition((yyvsp[-1].string));
           printf("<b>%s</b>\n", (yyvsp[-1].string)); }
-#line 1543 "proyecto.tab.c"
+#line 1547 "proyecto.tab.c"
     break;
 
   case 68: /* emphasis: EMPHASIS cursiva  */
 #line 196 "proyecto.y"
           {rmposition((yyvsp[-1].string));
           printf("<b>%s</b>\n", (yyvsp[-1].string)); }
-#line 1550 "proyecto.tab.c"
+#line 1554 "proyecto.tab.c"
     break;
 
   case 69: /* emphasis: EMPHASIS scratch  */
 #line 201 "proyecto.y"
           {rmposition((yyvsp[-1].string));
           printf("<b>%s</b>\n", (yyvsp[-1].string)); }
-#line 1557 "proyecto.tab.c"
+#line 1561 "proyecto.tab.c"
     break;
 
   case 70: /* emphasis: EMPHASIS textword  */
 #line 206 "proyecto.y"
           {rmposition((yyvsp[-1].string));
           printf("<b>%s</b>\n", (yyvsp[-1].string)); }
-#line 1564 "proyecto.tab.c"
+#line 1568 "proyecto.tab.c"
     break;
 
   case 71: /* emphasis: EMPHASIS comb  */
 #line 210 "proyecto.y"
           {rmposition((yyvsp[-1].string));
           printf("<b>%s</b>\n", (yyvsp[-1].string)); }
-#line 1571 "proyecto.tab.c"
+#line 1575 "proyecto.tab.c"
     break;
 
   case 72: /* emphasis: EMPHASIS comb2  */
 #line 214 "proyecto.y"
           {rmposition((yyvsp[-1].string));
           printf("<b>%s</b>\n", (yyvsp[-1].string)); }
-#line 1578 "proyecto.tab.c"
+#line 1582 "proyecto.tab.c"
     break;
 
   case 73: /* cursiva: CURSIVA  */
 #line 219 "proyecto.y"
                   {rmposition((yyvsp[0].string));
          printf("<em>%s</em>\n", (yyvsp[0].string)); }
-#line 1585 "proyecto.tab.c"
+#line 1589 "proyecto.tab.c"
     break;
 
   case 74: /* cursiva: CURSIVA title  */
 #line 223 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<em>%s</em>\n", (yyvsp[-1].string)); }
-#line 1592 "proyecto.tab.c"
+#line 1596 "proyecto.tab.c"
     break;
 
   case 75: /* cursiva: CURSIVA emphasis  */
 #line 226 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<em>%s</em>\n", (yyvsp[-1].string)); }
-#line 1599 "proyecto.tab.c"
+#line 1603 "proyecto.tab.c"
     break;
 
   case 76: /* cursiva: CURSIVA cursiva  */
 #line 229 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<em>%s</em>\n", (yyvsp[-1].string)); }
-#line 1606 "proyecto.tab.c"
+#line 1610 "proyecto.tab.c"
     break;
 
   case 77: /* cursiva: CURSIVA scratch  */
 #line 232 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<em>%s</em>\n", (yyvsp[-1].string)); }
-#line 1613 "proyecto.tab.c"
+#line 1617 "proyecto.tab.c"
     break;
 
   case 78: /* cursiva: CURSIVA textword  */
 #line 235 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<em>%s</em>\n", (yyvsp[-1].string)); }
-#line 1620 "proyecto.tab.c"
+#line 1624 "proyecto.tab.c"
     break;
 
   case 79: /* cursiva: CURSIVA comb  */
 #line 239 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<em>%s</em>\n", (yyvsp[-1].string)); }
-#line 1627 "proyecto.tab.c"
+#line 1631 "proyecto.tab.c"
     break;
 
   case 80: /* cursiva: CURSIVA comb2  */
 #line 243 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<em>%s</em>\n", (yyvsp[-1].string)); }
-#line 1634 "proyecto.tab.c"
+#line 1638 "proyecto.tab.c"
     break;
 
   case 81: /* comb: COMB  */
 #line 250 "proyecto.y"
                {rmposition((yyvsp[0].string));
          printf("<strong><em>%s</em></strong>\n", (yyvsp[0].string)); }
-#line 1641 "proyecto.tab.c"
+#line 1645 "proyecto.tab.c"
     break;
 
   case 82: /* comb: COMB title  */
 #line 254 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<strong><em>%s</em></strong>\n", (yyvsp[-1].string)); }
-#line 1648 "proyecto.tab.c"
+#line 1652 "proyecto.tab.c"
     break;
 
   case 83: /* comb: COMB emphasis  */
 #line 257 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<strong><em>%s</em></strong>\n", (yyvsp[-1].string)); }
-#line 1655 "proyecto.tab.c"
+#line 1659 "proyecto.tab.c"
     break;
 
   case 84: /* comb: COMB cursiva  */
 #line 260 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<strong><em>%s</em></strong>\n", (yyvsp[-1].string)); }
-#line 1662 "proyecto.tab.c"
+#line 1666 "proyecto.tab.c"
     break;
 
   case 85: /* comb: COMB scratch  */
 #line 263 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<strong><em>%s</em></strong>\n", (yyvsp[-1].string)); }
-#line 1669 "proyecto.tab.c"
+#line 1673 "proyecto.tab.c"
     break;
 
   case 86: /* comb: COMB textword  */
 #line 266 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<strong><em>%s</em></strong>\n", (yyvsp[-1].string)); }
-#line 1676 "proyecto.tab.c"
+#line 1680 "proyecto.tab.c"
     break;
 
   case 87: /* comb: COMB comb2  */
 #line 269 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<strong><em>%s</em></strong>\n", (yyvsp[-1].string)); }
-#line 1683 "proyecto.tab.c"
+#line 1687 "proyecto.tab.c"
     break;
 
   case 88: /* comb: COMB comb  */
 #line 272 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<strong><em>%s</em></strong>\n", (yyvsp[-1].string)); }
-#line 1690 "proyecto.tab.c"
+#line 1694 "proyecto.tab.c"
     break;
 
-  case 89: /* comb2: COMB2  */
+  case 89: /* comb: COMB listas  */
 #line 276 "proyecto.y"
+         {rmposition((yyvsp[-1].string));
+         printf("<strong><em>%s</em></strong>\n", (yyvsp[-1].string)); }
+#line 1701 "proyecto.tab.c"
+    break;
+
+  case 90: /* comb2: COMB2  */
+#line 280 "proyecto.y"
                  {rmposition((yyvsp[0].string));
          printf("<del><em>%s</em></del>\n", (yyvsp[0].string)); }
-#line 1697 "proyecto.tab.c"
+#line 1708 "proyecto.tab.c"
     break;
 
-  case 90: /* comb2: COMB2 title  */
-#line 280 "proyecto.y"
+  case 91: /* comb2: COMB2 title  */
+#line 284 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<del><em>%s</em></del>\n", (yyvsp[-1].string)); }
-#line 1704 "proyecto.tab.c"
+#line 1715 "proyecto.tab.c"
     break;
 
-  case 91: /* comb2: COMB2 emphasis  */
-#line 283 "proyecto.y"
+  case 92: /* comb2: COMB2 emphasis  */
+#line 287 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<del><em>%s</em></del>\n", (yyvsp[-1].string)); }
-#line 1711 "proyecto.tab.c"
+#line 1722 "proyecto.tab.c"
     break;
 
-  case 92: /* comb2: COMB2 cursiva  */
-#line 286 "proyecto.y"
+  case 93: /* comb2: COMB2 cursiva  */
+#line 290 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<del><em>%s</em></del>\n", (yyvsp[-1].string)); }
-#line 1718 "proyecto.tab.c"
+#line 1729 "proyecto.tab.c"
     break;
 
-  case 93: /* comb2: COMB2 scratch  */
-#line 289 "proyecto.y"
+  case 94: /* comb2: COMB2 scratch  */
+#line 293 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<del><em>%s</em></del>\n", (yyvsp[-1].string)); }
-#line 1725 "proyecto.tab.c"
+#line 1736 "proyecto.tab.c"
     break;
 
-  case 94: /* comb2: COMB2 textword  */
-#line 292 "proyecto.y"
+  case 95: /* comb2: COMB2 textword  */
+#line 296 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<del><em>%s</em></del>\n", (yyvsp[-1].string)); }
-#line 1732 "proyecto.tab.c"
+#line 1743 "proyecto.tab.c"
     break;
 
-  case 95: /* comb2: COMB2 comb  */
-#line 295 "proyecto.y"
-         {rmposition((yyvsp[-1].string));
-         printf("<del><em>%s</em></del>\n", (yyvsp[-1].string)); }
-#line 1739 "proyecto.tab.c"
-    break;
-
-  case 96: /* comb2: COMB2 comb2  */
+  case 96: /* comb2: COMB2 comb  */
 #line 299 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<del><em>%s</em></del>\n", (yyvsp[-1].string)); }
-#line 1746 "proyecto.tab.c"
+#line 1750 "proyecto.tab.c"
     break;
 
-  case 97: /* scratch: SCRATCH  */
-#line 308 "proyecto.y"
+  case 97: /* comb2: COMB2 comb2  */
+#line 303 "proyecto.y"
+         {rmposition((yyvsp[-1].string));
+         printf("<del><em>%s</em></del>\n", (yyvsp[-1].string)); }
+#line 1757 "proyecto.tab.c"
+    break;
+
+  case 98: /* comb2: COMB2 listas  */
+#line 307 "proyecto.y"
+         {rmposition((yyvsp[-1].string));
+         printf("<del><em>%s</em></del>\n", (yyvsp[-1].string)); }
+#line 1764 "proyecto.tab.c"
+    break;
+
+  case 99: /* scratch: SCRATCH  */
+#line 317 "proyecto.y"
                  {rmposition((yyvsp[0].string));
 
          printf("<del>%s</del>\n", (yyvsp[0].string)); }
-#line 1754 "proyecto.tab.c"
+#line 1772 "proyecto.tab.c"
     break;
 
-  case 98: /* scratch: SCRATCH title  */
-#line 313 "proyecto.y"
-         {rmposition((yyvsp[-1].string));
-         printf("<del>%s</del>\n", (yyvsp[-1].string)); }
-#line 1761 "proyecto.tab.c"
-    break;
-
-  case 99: /* scratch: SCRATCH scratch  */
-#line 316 "proyecto.y"
-         {rmposition((yyvsp[-1].string));
-         printf("<del>%s</del>\n", (yyvsp[-1].string)); }
-#line 1768 "proyecto.tab.c"
-    break;
-
-  case 100: /* scratch: SCRATCH cursiva  */
-#line 319 "proyecto.y"
-         {rmposition((yyvsp[-1].string));
-         printf("<del>%s</del>\n", (yyvsp[-1].string)); }
-#line 1775 "proyecto.tab.c"
-    break;
-
-  case 101: /* scratch: SCRATCH emphasis  */
+  case 100: /* scratch: SCRATCH title  */
 #line 322 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<del>%s</del>\n", (yyvsp[-1].string)); }
-#line 1782 "proyecto.tab.c"
+#line 1779 "proyecto.tab.c"
     break;
 
-  case 102: /* scratch: SCRATCH textword  */
+  case 101: /* scratch: SCRATCH scratch  */
 #line 325 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<del>%s</del>\n", (yyvsp[-1].string)); }
-#line 1789 "proyecto.tab.c"
+#line 1786 "proyecto.tab.c"
     break;
 
-  case 103: /* scratch: SCRATCH comb  */
+  case 102: /* scratch: SCRATCH cursiva  */
 #line 328 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<del>%s</del>\n", (yyvsp[-1].string)); }
-#line 1796 "proyecto.tab.c"
+#line 1793 "proyecto.tab.c"
     break;
 
-  case 104: /* scratch: SCRATCH comb2  */
+  case 103: /* scratch: SCRATCH emphasis  */
 #line 331 "proyecto.y"
          {rmposition((yyvsp[-1].string));
          printf("<del>%s</del>\n", (yyvsp[-1].string)); }
-#line 1803 "proyecto.tab.c"
+#line 1800 "proyecto.tab.c"
     break;
 
-  case 105: /* listas: LISTAORD  */
-#line 346 "proyecto.y"
-                 {printf("<li>%s</li>\n",(yyvsp[0].string)+3);}
-#line 1809 "proyecto.tab.c"
+  case 104: /* scratch: SCRATCH textword  */
+#line 334 "proyecto.y"
+         {rmposition((yyvsp[-1].string));
+         printf("<del>%s</del>\n", (yyvsp[-1].string)); }
+#line 1807 "proyecto.tab.c"
     break;
 
-  case 106: /* listas: LISTAORD listas  */
-#line 348 "proyecto.y"
-                         {printf("<li>%s</li>\n",(yyvsp[-1].string)+3);}
-#line 1815 "proyecto.tab.c"
+  case 105: /* scratch: SCRATCH comb  */
+#line 337 "proyecto.y"
+         {rmposition((yyvsp[-1].string));
+         printf("<del>%s</del>\n", (yyvsp[-1].string)); }
+#line 1814 "proyecto.tab.c"
     break;
 
-  case 107: /* listas: LISTAORD title  */
-#line 350 "proyecto.y"
-                        {printf("<li>%s</li>\n",(yyvsp[-1].string)+3);}
+  case 106: /* scratch: SCRATCH comb2  */
+#line 340 "proyecto.y"
+         {rmposition((yyvsp[-1].string));
+         printf("<del>%s</del>\n", (yyvsp[-1].string)); }
 #line 1821 "proyecto.tab.c"
     break;
 
-  case 108: /* listas: LISTAORD scratch  */
-#line 352 "proyecto.y"
-                          {printf("<li>%s</li>\n",(yyvsp[-1].string)+3);}
+  case 107: /* listas: LISTAORD  */
+#line 355 "proyecto.y"
+                 {printf("<li>%s</li>\n",(yyvsp[0].string)+3);}
 #line 1827 "proyecto.tab.c"
     break;
 
-  case 109: /* listas: LISTAORD cursiva  */
-#line 354 "proyecto.y"
-                          {printf("<li>%s</li>\n",(yyvsp[-1].string)+3);}
+  case 108: /* listas: LISTAORD listas  */
+#line 357 "proyecto.y"
+                         {printf("<li>%s</li>\n",(yyvsp[-1].string)+3);}
 #line 1833 "proyecto.tab.c"
     break;
 
-  case 110: /* listas: LISTAORD emphasis  */
-#line 356 "proyecto.y"
-                           {printf("<li>%s</li>\n",(yyvsp[-1].string)+3);}
+  case 109: /* listas: LISTAORD title  */
+#line 359 "proyecto.y"
+                        {printf("<li>%s</li>\n",(yyvsp[-1].string)+3);}
 #line 1839 "proyecto.tab.c"
     break;
 
-  case 111: /* listas: LISTAORD textword  */
-#line 358 "proyecto.y"
-                           {printf("<li>%s</li>\n", (yyvsp[-1].string)+3);}
+  case 110: /* listas: LISTAORD scratch  */
+#line 361 "proyecto.y"
+                          {printf("<li>%s</li>\n",(yyvsp[-1].string)+3);}
 #line 1845 "proyecto.tab.c"
     break;
 
-  case 112: /* listas: LISTADESORD  */
-#line 360 "proyecto.y"
-                     {printf("<li>%s</li>\n",(yyvsp[0].string)+2);}
+  case 111: /* listas: LISTAORD cursiva  */
+#line 363 "proyecto.y"
+                          {printf("<li>%s</li>\n",(yyvsp[-1].string)+3);}
 #line 1851 "proyecto.tab.c"
     break;
 
-  case 113: /* listas: LISTADESORD listas  */
-#line 362 "proyecto.y"
-                            {printf("<li>%s</li>\n",(yyvsp[-1].string)+2);}
+  case 112: /* listas: LISTAORD emphasis  */
+#line 365 "proyecto.y"
+                           {printf("<li>%s</li>\n",(yyvsp[-1].string)+3);}
 #line 1857 "proyecto.tab.c"
     break;
 
-  case 114: /* listas: LISTADESORD title  */
-#line 364 "proyecto.y"
-                           {printf("<li>%s</li>\n",(yyvsp[-1].string)+2);}
+  case 113: /* listas: LISTAORD textword  */
+#line 367 "proyecto.y"
+                           {printf("<li>%s</li>\n", (yyvsp[-1].string)+3);}
 #line 1863 "proyecto.tab.c"
     break;
 
-  case 115: /* listas: LISTADESORD scratch  */
-#line 366 "proyecto.y"
-                             {printf("<li>%s</li>\n",(yyvsp[-1].string)+2);}
+  case 114: /* listas: LISTAORD comb  */
+#line 369 "proyecto.y"
+                       {printf("<li>%s</li>\n", (yyvsp[-1].string)+3);}
 #line 1869 "proyecto.tab.c"
     break;
 
-  case 116: /* listas: LISTADESORD cursiva  */
-#line 368 "proyecto.y"
-                             {printf("<li>%s</li>\n",(yyvsp[-1].string)+2);}
+  case 115: /* listas: LISTAORD comb2  */
+#line 371 "proyecto.y"
+                        {printf("<li>%s</li>\n", (yyvsp[-1].string)+3);}
 #line 1875 "proyecto.tab.c"
     break;
 
-  case 117: /* listas: LISTADESORD emphasis  */
-#line 370 "proyecto.y"
-                              {printf("<li>%s</li>\n",(yyvsp[-1].string)+2);}
+  case 116: /* listas: LISTADESORD  */
+#line 373 "proyecto.y"
+                     {printf("<li>%s</li>\n",(yyvsp[0].string)+2);}
 #line 1881 "proyecto.tab.c"
     break;
 
-  case 118: /* listas: LISTADESORD textword  */
-#line 372 "proyecto.y"
-                              {printf("<li>%s</li>\n", (yyvsp[-1].string)+2);}
+  case 117: /* listas: LISTADESORD listas  */
+#line 375 "proyecto.y"
+                            {printf("<li>%s</li>\n",(yyvsp[-1].string)+2);}
 #line 1887 "proyecto.tab.c"
     break;
 
+  case 118: /* listas: LISTADESORD title  */
+#line 377 "proyecto.y"
+                           {printf("<li>%s</li>\n",(yyvsp[-1].string)+2);}
+#line 1893 "proyecto.tab.c"
+    break;
 
-#line 1891 "proyecto.tab.c"
+  case 119: /* listas: LISTADESORD scratch  */
+#line 379 "proyecto.y"
+                             {printf("<li>%s</li>\n",(yyvsp[-1].string)+2);}
+#line 1899 "proyecto.tab.c"
+    break;
+
+  case 120: /* listas: LISTADESORD cursiva  */
+#line 381 "proyecto.y"
+                             {printf("<li>%s</li>\n",(yyvsp[-1].string)+2);}
+#line 1905 "proyecto.tab.c"
+    break;
+
+  case 121: /* listas: LISTADESORD emphasis  */
+#line 383 "proyecto.y"
+                              {printf("<li>%s</li>\n",(yyvsp[-1].string)+2);}
+#line 1911 "proyecto.tab.c"
+    break;
+
+  case 122: /* listas: LISTADESORD textword  */
+#line 385 "proyecto.y"
+                              {printf("<li>%s</li>\n", (yyvsp[-1].string)+2);}
+#line 1917 "proyecto.tab.c"
+    break;
+
+  case 123: /* listas: LISTADESORD comb  */
+#line 387 "proyecto.y"
+                          {printf("<li>%s</li>\n", (yyvsp[-1].string)+2);}
+#line 1923 "proyecto.tab.c"
+    break;
+
+  case 124: /* listas: LISTADESORD comb2  */
+#line 389 "proyecto.y"
+                           {printf("<li>%s</li>\n", (yyvsp[-1].string)+2);}
+#line 1929 "proyecto.tab.c"
+    break;
+
+
+#line 1933 "proyecto.tab.c"
 
       default: break;
     }
@@ -2080,7 +2122,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 378 "proyecto.y"
+#line 395 "proyecto.y"
 
 
 

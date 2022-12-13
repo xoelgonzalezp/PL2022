@@ -271,6 +271,10 @@ comb:    COMB  {rmposition($1);
          | COMB comb
          {rmposition($1);
          printf("<strong><em>%s</em></strong>\n", $1); }  
+         
+         | COMB listas
+         {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); } 
 ;
 
 comb2:    COMB2  {rmposition($1);
@@ -298,6 +302,11 @@ comb2:    COMB2  {rmposition($1);
          | COMB2 comb2  
          {rmposition($1);
          printf("<del><em>%s</em></del>\n", $1); }  
+         
+         | COMB2 listas  
+         {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); }  
+         
 ;
 
 
@@ -357,6 +366,10 @@ listas: LISTAORD {printf("<li>%s</li>\n",$1+3);}
         
         |LISTAORD textword {printf("<li>%s</li>\n", $1+3);}
         
+        |LISTAORD comb {printf("<li>%s</li>\n", $1+3);}
+        
+        |LISTAORD comb2 {printf("<li>%s</li>\n", $1+3);}
+        
         |LISTADESORD {printf("<li>%s</li>\n",$1+2);}
 
         |LISTADESORD listas {printf("<li>%s</li>\n",$1+2);}
@@ -370,10 +383,14 @@ listas: LISTAORD {printf("<li>%s</li>\n",$1+3);}
         |LISTADESORD emphasis {printf("<li>%s</li>\n",$1+2);}
         
         |LISTADESORD textword {printf("<li>%s</li>\n", $1+2);}
+        
+        |LISTADESORD comb {printf("<li>%s</li>\n", $1+2);}
+        
+        |LISTADESORD comb2 {printf("<li>%s</li>\n", $1+2);}
+        
      
 ;
          
-
 
 %%
 
