@@ -4,9 +4,10 @@
 #include "stdio.h"
 #include "string.h"
 int yylex(void);
-void yyerror(char const *message); 
+void yyerror(char  *s); 
 char *rmposition (char *s);
-
+void *detectlist(char *s);
+FILE *HTML;
 %}
 
 
@@ -35,6 +36,8 @@ char *rmposition (char *s);
 %token <string> LINK
 %token <string> TEXTWORD
 %token <string> TITLE
+%token <string> LINKNAME
+
 
 %start S
 
@@ -46,115 +49,146 @@ S: title
 
 title: H1
           
-   {printf("<h1>%s</h1>\n", $1+2);}
+   {fprintf(HTML,"<h1>%s</h1>\n", $1+2);}
+   
+  
   | H2 
-    {printf("<h2>%s</h2>\n", $1+3);}
+    {fprintf(HTML,"<h2>%s</h2>\n", $1+3);}
   |H3 
-    {printf("<h3>%s</h3>\n", $1+4);}
+    {fprintf(HTML,"<h3>%s</h3>\n", $1+4);}
   |H4 
-    {printf("<h4> %s </h4>\n", $1+5);}
+    {fprintf(HTML,"<h4> %s </h4>\n", $1+5);}
   |H5 
-    {printf("<h5>%s</h5>\n", $1+6);}
+    {fprintf(HTML,"<h5>%s</h5>\n", $1+6);}
   |H6 
-    {printf("<h6>%s</h6>\n", $1+7);}  
+    {fprintf(HTML,"<h6>%s</h6>\n", $1+7);}  
 	| H1 title
-    	{printf("<h1>%s</h1>\n", $1+2);}  
+    	{fprintf(HTML,"<h1>%s</h1>\n", $1+2);}  
 	| H2 title
-    	{printf("<h2>%s</h2>\n", $1+3);}  
+    	{fprintf(HTML,"<h2>%s</h2>\n", $1+3);}  
 	| H3 title
-    	{printf("<h3>%s</h3>\n", $1+4);}  
+    	{fprintf(HTML,"<h3>%s</h3>\n", $1+4);}  
 	| H4 title
-    	{printf("<h4>%s</h4>\n", $1+5);}  
+    	{fprintf(HTML,"<h4>%s</h4>\n", $1+5);}  
 	| H5 title
-    	{printf("<h5>%s</h5>\n", $1+6);}  
+    	{fprintf(HTML,"<h5>%s</h5>\n", $1+6);}  
 	| H6 title
-    	{printf("<h6>%s</h6>\n", $1+7);}
+    	{fprintf(HTML,"<h6>%s</h6>\n", $1+7);}
 	| H1 textword
-	{printf("<h1>%s</h1>\n", $1+2);} 
+	{fprintf(HTML,"<h1>%s</h1>\n", $1+2);} 
 	| H2 textword
-	{printf("<h2>%s</h2>\n", $1+2);} 
+	{fprintf(HTML,"<h2>%s</h2>\n", $1+2);} 
 	| H3 textword
-	{printf("<h3>%s</h3>\n", $1+2);} 
+	{fprintf(HTML,"<h3>%s</h3>\n", $1+2);} 
 	| H4 textword
-	{printf("<h4>%s</h4>\n", $1+2);} 
+	{fprintf(HTML,"<h4>%s</h4>\n", $1+2);} 
 	| H5 textword
-	{printf("<h5>%s</h5>\n", $1+2);} 
+	{fprintf(HTML,"<h5>%s</h5>\n", $1+2);} 
 	| H6 textword
-	{printf("<h6>%s</h6>\n", $1+2);} 
+	{fprintf(HTML,"<h6>%s</h6>\n", $1+2);} 
 	| H1 emphasis
-	{printf("<h1>%s</h1>\n", $1+2);} 
+	{fprintf(HTML,"<h1>%s</h1>\n", $1+2);} 
 	| H2 emphasis
-	{printf("<h2>%s</h2>\n", $1+3);} 
+	{fprintf(HTML,"<h2>%s</h2>\n", $1+3);} 
 	| H3 emphasis
-	{printf("<h3>%s</h3>\n", $1+4);} 
+	{fprintf(HTML,"<h3>%s</h3>\n", $1+4);} 
 	| H4 emphasis
-	{printf("<h4>%s</h4>\n", $1+5);} 
+	{fprintf(HTML,"<h4>%s</h4>\n", $1+5);} 
 	| H5 emphasis
-	{printf("<h5>%s</h5>\n", $1+6);} 
+	{fprintf(HTML,"<h5>%s</h5>\n", $1+6);} 
 	| H6 emphasis
-	{printf("<h6>%s</h6>\n", $1+7);} 
+	{fprintf(HTML,"<h6>%s</h6>\n", $1+7);} 
 	| H1 cursiva
-	{printf("<h1>%s</h1>\n", $1+2);} 
+	{fprintf(HTML,"<h1>%s</h1>\n", $1+2);} 
 	| H2 cursiva
-	{printf("<h2>%s</h2>\n", $1+3);} 
+	{fprintf(HTML,"<h2>%s</h2>\n", $1+3);} 
 	| H3 cursiva
-	{printf("<h3>%s</h3>\n", $1+4);} 
+	{fprintf(HTML,"<h3>%s</h3>\n", $1+4);} 
 	| H4 cursiva
-	{printf("<h4>%s</h4>\n", $1+5);} 
+	{fprintf(HTML,"<h4>%s</h4>\n", $1+5);} 
 	| H5 cursiva
-	{printf("<h5>%s</h5>\n", $1+6);} 
+	{fprintf(HTML,"<h5>%s</h5>\n", $1+6);} 
 	| H6 cursiva
-	{printf("<h6>%s</h6>\n", $1+7);} 
+	{fprintf(HTML,"<h6>%s</h6>\n", $1+7);} 
 	| H1 scratch
-	{printf("<h1>%s</h1>\n", $1+2);} 
+	{fprintf(HTML,"<h1>%s</h1>\n", $1+2);} 
 	| H2 scratch
-	{printf("<h2>%s</h2>\n", $1+3);} 
+	{fprintf(HTML,"<h2>%s</h2>\n", $1+3);} 
 	| H3 scratch
-	{printf("<h3>%s</h3>\n", $1+4);} 
+	{fprintf(HTML,"<h3>%s</h3>\n", $1+4);} 
 	| H4 scratch
-	{printf("<h4>%s</h4>\n", $1+5);} 
+	{fprintf(HTML,"<h4>%s</h4>\n", $1+5);} 
 	| H5 scratch
-	{printf("<h5>%s</h5>\n", $1+6);} 
+	{fprintf(HTML,"<h5>%s</h5>\n", $1+6);} 
 	| H6 scratch
-	{printf("<h6>%s</h6>\n", $1+7);} 
+	{fprintf(HTML,"<h6>%s</h6>\n", $1+7);} 
 	| H1 listas
-	{printf("<h1>%s</h1>\n", $1+2);} 
+	{fprintf(HTML,"<h1>%s</h1>\n", $1+2);} 
 	| H2 listas
-	{printf("<h2>%s</h2>\n", $1+3);} 
+	{fprintf(HTML,"<h2>%s</h2>\n", $1+3);} 
 	| H3 listas
-	{printf("<h3>%s</h3>\n", $1+4);} 
+	{fprintf(HTML,"<h3>%s</h3>\n", $1+4);} 
 	| H4 listas
-	{printf("<h4>%s</h4>\n", $1+5);} 
+	{fprintf(HTML,"<h4>%s</h4>\n", $1+5);} 
 	| H5 listas
-	{printf("<h5>%s</h5>\n", $1+6);} 
-	| H6 listas
-	{printf("<h6>%s</h6>\n", $1+7);} 
+	{fprintf(HTML,"<h5>%s</h5>\n", $1+6);} 
+	|H6 listas
+	{fprintf(HTML,"<h6>%s</h6>\n", $1+7);} 
 	| H1 comb
-	{printf("<h1>%s</h1>\n", $1+2);} 
+	{fprintf(HTML,"<h1>%s</h1>\n", $1+2);} 
 	| H2 comb
-	{printf("<h2>%s</h2>\n", $1+3);} 
+	{fprintf(HTML,"<h2>%s</h2>\n", $1+3);} 
 	| H3 comb
-	{printf("<h3>%s</h3>\n", $1+4);} 
+	{fprintf(HTML,"<h3>%s</h3>\n", $1+4);} 
 	| H4 comb
-	{printf("<h4>%s</h4>\n", $1+5);} 
+	{fprintf(HTML,"<h4>%s</h4>\n", $1+5);} 
 	| H5 comb
-	{printf("<h5>%s</h5>\n", $1+6);} 
+	{fprintf(HTML,"<h5>%s</h5>\n", $1+6);} 
 	| H6 comb
-	{printf("<h6>%s</h6>\n", $1+7);} 
+	{fprintf(HTML,"<h6>%s</h6>\n", $1+7);} 
 	| H1 comb2
-	{printf("<h1>%s</h1>\n", $1+2);} 
+	{fprintf(HTML,"<h1>%s</h1>\n", $1+2);} 
 	| H2 comb2
-	{printf("<h2>%s</h2>\n", $1+3);} 
+	{fprintf(HTML,"<h2>%s</h2>\n", $1+3);} 
 	| H3 comb2
-	{printf("<h3>%s</h3>\n", $1+4);} 
+	{fprintf(HTML,"<h3>%s</h3>\n", $1+4);} 
 	| H4 comb2
-	{printf("<h4>%s</h4>\n", $1+5);} 
+	{fprintf(HTML,"<h4>%s</h4>\n", $1+5);} 
 	| H5 comb2
-	{printf("<h5>%s</h5>\n", $1+6);} 
+	{fprintf(HTML,"<h5>%s</h5>\n", $1+6);} 
 	| H6 comb2
-	{printf("<h6>%s</h6>\n", $1+7);} 
+	{fprintf(HTML,"<h6>%s</h6>\n", $1+7);} 
+	| H1 code
+	{fprintf(HTML,"<h1>%s</h1>\n", $1+2);} 
+	| H2 code
+	{fprintf(HTML,"<h2>%s</h2>\n", $1+3);} 
+	| H3 code
+	{fprintf(HTML,"<h3>%s</h3>\n", $1+4);} 
+	| H4 code
+	{fprintf(HTML,"<h4>%s</h4>\n", $1+5);} 
+	| H5 code
+	{fprintf(HTML,"<h5>%s</h5>\n", $1+6);} 
+	| H6 code
+	{fprintf(HTML,"<h6>%s</h6>\n", $1+7);} 
 	
-;;
+	| H1 link
+	{fprintf(HTML,"<h1>%s</h1>\n", $1+2);} 
+	| H2 link
+	{fprintf(HTML,"<h2>%s</h2>\n", $1+3);} 
+	| H3 link
+	{fprintf(HTML,"<h3>%s</h3>\n", $1+4);} 
+	| H4 link
+	{fprintf(HTML,"<h4>%s</h4>\n", $1+5);} 
+	| H5 link
+	{fprintf(HTML,"<h5>%s</h5>\n", $1+6);} 
+	| H6 link
+	{fprintf(HTML,"<h6>%s</h6>\n", $1+7);} 
+	
+	
+	
+		
+	
+;
 
 
 
@@ -168,7 +202,9 @@ textword:TEXTWORD {printf("<p>%s</p>\n", $1); }
         |TEXTWORD comb
         |TEXTWORD comb2
         |TEXTWORD emphasis
-        
+        |TEXTWORD code
+        |TEXTWORD textword
+        |TEXTWORD link
             
 ;
 
@@ -213,6 +249,16 @@ emphasis: EMPHASIS
           |EMPHASIS comb2
           {rmposition($1);
           printf("<b>%s</b>\n", $1); }
+          
+          
+          |EMPHASIS code
+          {rmposition($1);
+          printf("<b>%s</b>\n", $1); }
+          
+          
+          |EMPHASIS link
+          {rmposition($1);
+          printf("<b>%s</b>\n", $1); }
                
 ;          
      
@@ -242,6 +288,17 @@ cursiva: CURSIVA  {rmposition($1);
          |CURSIVA comb2
          {rmposition($1);
          printf("<em>%s</em>\n", $1); }
+         
+         |CURSIVA code
+         {rmposition($1);
+         printf("<em>%s</em>\n", $1); }
+         
+         
+         |CURSIVA link
+         {rmposition($1);
+         printf("<em>%s</em>\n", $1); }
+         
+         
              
 ;
 
@@ -275,7 +332,20 @@ comb:    COMB  {rmposition($1);
          | COMB listas
          {rmposition($1);
          printf("<strong><em>%s</em></strong>\n", $1); } 
+         
+         
+         | COMB code
+         {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); } 
+         
+         
+         | COMB link
+         {rmposition($1);
+         printf("<strong><em>%s</em></strong>\n", $1); } 
+         
+         
 ;
+
 
 comb2:    COMB2  {rmposition($1);
          printf("<del><em>%s</em></del>\n", $1); }
@@ -306,6 +376,15 @@ comb2:    COMB2  {rmposition($1);
          | COMB2 listas  
          {rmposition($1);
          printf("<del><em>%s</em></del>\n", $1); }  
+         
+         | COMB2 code  
+         {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); }  
+         
+         
+         | COMB2 link  
+         {rmposition($1);
+         printf("<del><em>%s</em></del>\n", $1); } 
          
 ;
 
@@ -339,6 +418,14 @@ scratch: SCRATCH {rmposition($1);
          |SCRATCH comb2
          {rmposition($1);
          printf("<del>%s</del>\n", $1); }
+         
+         |SCRATCH code
+         {rmposition($1);
+         printf("<del>%s</del>\n", $1); }
+         
+         |SCRATCH link
+         {rmposition($1);
+         printf("<del>%s</del>\n", $1); }
              
 ;
 
@@ -352,45 +439,280 @@ scratch: SCRATCH {rmposition($1);
 
 
 
-listas: LISTAORD {printf("<li>%s</li>\n",$1+3);}
+listas: LISTAORD {
 
-        |LISTAORD listas {printf("<li>%s</li>\n",$1+3);}
+        printf("<li>%s</li>\n",$1+3);
+        detectlist($1);
+        }
 
-        |LISTAORD title {printf("<li>%s</li>\n",$1+3);}
+        |LISTAORD listas {
+        printf("<li>%s</li>\n",$1+3);
+        detectlist($1);
+        }
         
-        |LISTAORD scratch {printf("<li>%s</li>\n",$1+3);}
-        
-        |LISTAORD cursiva {printf("<li>%s</li>\n",$1+3);}
-        
-        |LISTAORD emphasis {printf("<li>%s</li>\n",$1+3);}
-        
-        |LISTAORD textword {printf("<li>%s</li>\n", $1+3);}
-        
-        |LISTAORD comb {printf("<li>%s</li>\n", $1+3);}
-        
-        |LISTAORD comb2 {printf("<li>%s</li>\n", $1+3);}
-        
-        |LISTADESORD {printf("<li>%s</li>\n",$1+2);}
 
-        |LISTADESORD listas {printf("<li>%s</li>\n",$1+2);}
+        |LISTAORD title {
+       
+        printf("<li>%s</li>\n",$1+3);
+        detectlist($1);
+        }
+        
+        |LISTAORD scratch {
+        
+        printf("<li>%s</li>\n",$1+3);
+        detectlist($1);
+        
+        }
+        
+        |LISTAORD cursiva {
+        
+        printf("<li>%s</li>\n",$1+3);
+        detectlist($1);
+        
+        }
+        
+        |LISTAORD emphasis {
+    
+        printf("<li>%s</li>\n",$1+3);
+        detectlist($1);
+        }
+        
+        |LISTAORD textword {
+        printf("<li>%s</li>\n", $1+3);
+        detectlist($1);
+        }
+        
+        |LISTAORD comb {
+        printf("<li>%s</li>\n", $1+3);
+        detectlist($1);
+        }
+        
+        |LISTAORD comb2 {
+        printf("<li>%s</li>\n", $1+3);
+        detectlist($1);
+        }
+        
+         |LISTAORD code {
+        printf("<li>%s</li>\n", $1+3);
+        detectlist($1);
+        }
+        
+         |LISTAORD link {
+        printf("<li>%s</li>\n", $1+3);
+        detectlist($1);
+        }
+        
+        |LISTADESORD {
+        printf("<li>%s</li>\n",$1+2);
+        detectlist($1);
+        }
 
-        |LISTADESORD title {printf("<li>%s</li>\n",$1+2);}
+        |LISTADESORD listas {
+        printf("<li>%s</li>\n",$1+2);
+        detectlist($1);
+        }
+
+        |LISTADESORD title {
+        printf("<li>%s</li>\n",$1+2);
+        detectlist($1);
+        }
         
-        |LISTADESORD scratch {printf("<li>%s</li>\n",$1+2);}
+        |LISTADESORD scratch {
+        printf("<li>%s</li>\n",$1+2);
+        detectlist($1);
+        }
         
-        |LISTADESORD cursiva {printf("<li>%s</li>\n",$1+2);}
+        |LISTADESORD cursiva {
+        printf("<li>%s</li>\n",$1+2);
+        detectlist($1);
+        }
         
-        |LISTADESORD emphasis {printf("<li>%s</li>\n",$1+2);}
+        |LISTADESORD emphasis {
+        printf("<li>%s</li>\n",$1+2);
+        detectlist($1);
+        }
         
-        |LISTADESORD textword {printf("<li>%s</li>\n", $1+2);}
+        |LISTADESORD textword {
+        printf("<li>%s</li>\n", $1+2);
+        detectlist($1);
+        }
         
-        |LISTADESORD comb {printf("<li>%s</li>\n", $1+2);}
+        |LISTADESORD comb {
+        printf("<li>%s</li>\n", $1+2);
+        detectlist($1);
+        }
         
-        |LISTADESORD comb2 {printf("<li>%s</li>\n", $1+2);}
+        |LISTADESORD comb2 {
+        printf("<li>%s</li>\n", $1+2);
+        detectlist($1);
+        }
         
+        
+        |LISTADESORD code {
+        printf("<li>%s</li>\n", $1+2);
+        detectlist($1);
+        }
+        
+        |LISTADESORD link {
+        printf("<li>%s</li>\n", $1+2);
+        detectlist($1);
+        }
      
 ;
-         
+
+
+
+
+code: CODE {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+
+
+     |CODE title {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+
+     |CODE scratch {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+     
+     
+     |CODE cursiva {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+     
+     
+     |CODE textword {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+     
+     
+     |CODE emphasis {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+     
+     
+     |CODE comb {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+     
+     
+     |CODE comb2 {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+     
+     
+     |CODE code {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+     
+     
+     |CODE listas {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+     
+     |CODE link {
+     rmposition($1);
+     printf("<code>%s</code>\n", $1);}
+
+ 
+;
+
+link: 
+
+     LINKNAME LINK {
+     
+   
+     rmposition($1);
+     rmposition($2);
+     printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+     
+     |LINKNAME LINK link{
+    
+     rmposition($1);
+     rmposition($2);
+     printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+     
+
+     |LINKNAME LINK title {
+  
+     rmposition($1);
+     rmposition($2);
+     
+     printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+
+     |LINKNAME LINK scratch {
+    
+     rmposition($1);
+     rmposition($2);
+    
+     printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+     
+     
+     |LINKNAME LINK cursiva {
+     
+     rmposition($1);
+     rmposition($2);
+  
+     printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+     
+     
+     |LINKNAME LINK textword {
+  
+     rmposition($1);
+     rmposition($2);
+     
+     printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+     
+     
+     |LINKNAME LINK emphasis {
+   
+     rmposition($1);
+     rmposition($2);
+     
+    printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+     
+     
+     |LINKNAME LINK comb {
+    
+     rmposition($1);
+     rmposition($2);
+     
+     printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+     
+     
+     |LINKNAME LINK comb2 {
+    
+     rmposition($1);
+     rmposition($2);
+  
+     printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+     
+     
+     |LINKNAME LINK code {
+    
+     rmposition($1);
+     rmposition($2);
+     printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+     
+     
+     |LINKNAME LINK listas {
+    
+     rmposition($1);
+     rmposition($2);
+     printf("<a href=%s>",$2);
+     printf("%s</a>\n", $1);}
+   
 
 %%
 
@@ -402,30 +724,51 @@ char *rmposition (char *s) //Function to remove symbols
         write = 0;                     
     
     for (int i = 0; s[i]; i++) {       
-        if (s[i] == '*' || s[i] == '_'|| s[i] == '~' )                
-            ast = 1;                 
+        if (s[i] == '*' || s[i] == '_'|| s[i] == '~' ||
+         s[i] == '`'  || s[i] == ')' ||  s[i] == '('  || s[i] == ']' ||  s[i] == '['    )                
+            ast = 1;  
+                  
         else                           
             s[write++] = s[i];         
     }
-    s[write] = 0;                       
     
+    s[write] = 0;   
+    
+
     return s;                          
 }
 
 
 
 
+void *detectlist(char *s){
+
+
+   for (int i = 0; s[i]; i++) {       
+        if (s[i] == '1' && s[i+1] == '.' && s[i+2] == ' ')                
+          printf("Inicio de lista ordenada\n");  
+          
+        if (s[i] == '+' && s[i+1] == ' ' || s[i] == '-' && s[i+1] == ' '    )
+          printf("Inicio de lista desordenada\n");
+          
+    }
+   
+}
 
 
 int main(int argc, char *argv[]) {
-	extern FILE *yyin;
-	yyin = fopen(argv[1], "r");
+
+        HTML = fopen("exit.md","w");
 	yyparse();
+	
 	return 0;
 }
 
 
+void yyerror(char *s){
 
+fprintf(stderr, "error: %s \n",s);
 
+}
 
 

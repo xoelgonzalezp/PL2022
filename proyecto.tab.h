@@ -70,44 +70,23 @@ extern int yydebug;
     LISTADESORD = 271,             /* LISTADESORD  */
     LINK = 272,                    /* LINK  */
     TEXTWORD = 273,                /* TEXTWORD  */
-    TITLE = 274                    /* TITLE  */
+    TITLE = 274,                   /* TITLE  */
+    LINKNAME = 275                 /* LINKNAME  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
-/* Token kinds.  */
-#define YYEMPTY -2
-#define YYEOF 0
-#define YYerror 256
-#define YYUNDEF 257
-#define H1 258
-#define H2 259
-#define H3 260
-#define H4 261
-#define H5 262
-#define H6 263
-#define CURSIVA 264
-#define COMB 265
-#define COMB2 266
-#define EMPHASIS 267
-#define SCRATCH 268
-#define CODE 269
-#define LISTAORD 270
-#define LISTADESORD 271
-#define LINK 272
-#define TEXTWORD 273
-#define TITLE 274
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 14 "proyecto.y"
+#line 15 "proyecto.y"
 
    
      char* string;
 
 
-#line 111 "proyecto.tab.h"
+#line 90 "proyecto.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
