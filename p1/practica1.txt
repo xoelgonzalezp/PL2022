@@ -1,0 +1,24 @@
+Autor : Xoel González Pereira
+
+Desarrollo
+-------------
+
+Esta practica ha consistido en la implementacion de un analizador estadistico de textos mediante el uso de FLEX. Dados varios archivos de prueba, el analizador detecta el numero total de caracteres del texto, asi como el numero de palabras mayusculas, minusculas, numericas y el numero de palabras totales del archivo. Ademas tambien proporciona el numero de frases, y cabe recalcar que es capaz de detectar como palabra cualquier tipo de cadena.
+
+
+
+Funcionamiento
+---------------
+
+Se ha creado un archivo llamado practica1.l en el que en la seccion de declaraciones se ha creado codigo C auxiliar formado por varias variables, que son los contadores para cada tipo de valor que se pide: contador total de caracteres, contadores de palabras minusculas y mayusculas, contador de palabras formadas por digitos y el de numero de frases. Ademas se han creado dos declaraciones, una para las palabras y otra para las frases, y han sido asociadas con sus respectivas expresiones regulares.
+
+En la seccion de reglas se han definido una serie de expresiones regulares, una que define un rango de caracteres asociado a caracteres de letras mayusculas, otra expresion regular que define el rango para las letras minusculas y otra para definir el rango de los digitos, que van del 0-9. Tambien se ha llamado a las declaraciones de palabra y frase, que tienen sus respectivas expresiones regulares asociadas. Por cada vez que se cumpla cada una de estas expresiones regulares, estaremos haciendo un incremento en sus respectivos contadores,y en el caso del contador de los caracteres, es incrementado en todos los casos, sumando la longitud del token actual con yyleng al valor del contador. 
+
+
+En la seccion de codigo, se declara el metodo main y se hace una llamada al analizador lexico yylex. Finalmente, se muestra por pantalla con un printf el numero de palabras mayusculas, minusculas,compuestas por digitos y totales, asi como el numero total de caracteres y frases del archivo.
+
+Peculiaridades
+----------------
+Hubo dudas en cuanto a la implementacion de la frase, ya que no se sabia si era necesario que hubiera palabras previamente ,pero finalmente se ha implementado de tal forma que cada vez que aparezca un punto detecte una frase.
+
+

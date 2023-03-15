@@ -1,0 +1,25 @@
+Autor : Xoel González Pereira
+
+Desarrollo
+-------------
+Esta práctica ha consistido en la creación de un parser de archivos XML, que para diversos archivos de prueba comprueba si su sintaxis es correcta, generando errores para casos específicos como la falta de cabecera, falta de etiquetas, etc.
+
+
+Funcionamiento
+---------------
+
+Para implementar el parser se han creado dos archivos (practica2.l y practica2.y). En practica2.y se definen los tokens que se pasan a practica2.l con la función yyval() y a cada uno de ellos se les asignan unas reglas. 
+
+En bison se han definido una serie de reglas gramaticales, en las que cada una de ellas genera un resultado que es un símbolo terminal. Se han definido varios casos para estas reglas en los que se encontraria una sintaxis XML correcta como en STATEMENT  COMMENT tags, y otros que no cumplen el uso correcto de la sintaxis, como es la falta de la cabecera en la primera regla:  COMMENT tags COMMENT. En caso de que el uso de la cabecera sea correcto se pasa a comprobar el uso de las etiquetas en la regla tags, OPENTAG content CLOSETAG. En este caso se comprueba si el valor del tag de inicio se corresponde con el de cierre, asignando al dollar de la etiqueta cerrada +2( para quitarle </ y asi poder comparar su valor con el otro tag).
+Lo mismo se hace con el tag de inicio, asignando a su dollar +1 para quitarle < y comparar su valor con la parte restante del tag de cierre. Tambien se han hecho casos para comprobar si falta el tag raiz, con OPENTAG CLOSETAG OPENTAG o OPENTAG content CLOSETAG OPENTAG. 
+
+En  la sección de código C, en el método main se llama yyin al archivo y se hace una llamada al analizador sintáctico con yyparse().
+
+Peculiaridades
+----------------
+
+El parser XML detecta de forma aproximada la línea en la que se produce un error si la sintaxis XML no es correcta, pero no se ha encontrado una forma más exacta de la detección de línea.
+
+
+
+
