@@ -1,2 +1,2 @@
 # PL2022
-Repo para la asignatura de Procesamiento de Lenguajes UDC
+Repositorio para la asignatura de Procesamiento de Lenguajes UDC
